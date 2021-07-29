@@ -8,14 +8,14 @@ var activeNote = {};
 // This function is for getting all notes from the db
 var getNotes = function() {
   return $.ajax({
-    url: "/api/notes",
+    url: "api/notes",
     method: "GET"
   });
 };
 // This function is for saving the given notes to the db
 var saveNote = function(note) {
   return $.ajax({
-    url: "/api/notes",
+    url: "api/notes",
     data: note,
     method: "POST"
   });
@@ -123,5 +123,3 @@ $noteText.on("keyup", handleRenderSaveBtn);
 $saveNoteBtn.on("click", handleNoteSave);
 $noteList.on("click", ".list-group-item", handleNoteView);
 getAndRenderNotes();
-
-module.exports = index;
