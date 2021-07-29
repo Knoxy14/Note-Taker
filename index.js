@@ -8,14 +8,14 @@ var activeNote = {};
 // This function is for getting all notes from the db
 var getNotes = function() {
   return $.ajax({
-    url: "api/notes",
+    url: "/api/notes",
     method: "GET"
   });
 };
 // This function is for saving the given notes to the db
 var saveNote = function(note) {
   return $.ajax({
-    url: "api/notes",
+    url: "/api/notes",
     data: note,
     method: "POST"
   });
@@ -23,7 +23,7 @@ var saveNote = function(note) {
 // This function is for deleting a note/notes from the db
 var deleteNote = function(id) {
   return $.ajax({
-    url: "api/notes/" + id,
+    url: "/api/notes/" + id,
     method: "DELETE"
   });
 };
