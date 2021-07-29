@@ -1,8 +1,8 @@
 const fs = require('fs');
 const path = require('path');
+const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 5000;
-const express = require('express');
 const uniqid = require('uniqid');
 
 app.use(express.urlencoded({ extended: true }));
@@ -17,11 +17,11 @@ app.get('/notes', (req, res) => {
     res.sendFile(path.join(__dirname, "/notes.html"));
 })
 
-app.get('api/notes', (req, res) => {
+app.get('/api/notes', (req, res) => {
     res.sendFile(path.join(__dirname, '/db.json'));
 });
 
-app.post('api/notes', (req, res) => {
+app.post('/api/notes', (req, res) => {
     req.body.id = uniqid();
     const newNote = req.body;
     
@@ -39,7 +39,7 @@ app.post('api/notes', (req, res) => {
     });
 });
 
-app.delete('api/notes/:id', (req, res) => {
+app.delete('/api/notes/:id', (req, res) => {
     fs.readFile(path.join(__dirname + '/db.json'), (err, data) => {
         const savedNotes = JSON.parse(data);
         const newNotes = savedNotes.filter(item => {
